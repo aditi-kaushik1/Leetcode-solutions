@@ -1,0 +1,27 @@
+class Solution {
+    public int numberOfSteps (int num) {
+        /*Solution 1*/
+        // int count=0;
+        // while(num!=0){
+        //     if(num%2==0){
+        //         num/=2;
+        //     }
+        //     else{
+        //         num-=1;
+        //     }
+        //     count++;
+        // }
+        // return count;
+        
+        /*Solution 2*/
+        int count=0;
+        while(num!=0){
+            if(num%2==1)
+                num-=1;
+            else
+            {num>>=1;}
+           count++;
+        }
+        return count;
+    }
+}
