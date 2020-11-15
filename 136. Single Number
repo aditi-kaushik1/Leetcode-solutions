@@ -1,0 +1,27 @@
+/*Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
+Follow up: Could you implement a solution with a linear runtime complexity and without using extra memory?*/
+
+class Solution {
+    public int singleNumber(int[] nums) {
+        /*Solution 1*/
+        // int xor1=nums[0];
+        // for(int i=1;i<nums.length;i++){
+        //     xor1=xor1^nums[i];
+        // }
+        // return xor1;
+        
+        /*Solution 2*/
+        /*Brute force*/
+        int count=0;
+        for(int i=0;i<nums.length;i++){
+            for(int j=0;j<nums.length;j++){
+                if(nums[i]==nums[j] && i!=j)
+                    break;
+                else if(j==(nums.length-1)){
+                    count=nums[i];
+                }
+            }
+        }
+        return count;
+    }
+}
