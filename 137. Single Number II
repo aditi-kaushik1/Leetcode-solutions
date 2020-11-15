@@ -1,0 +1,33 @@
+/*Given a non-empty array of integers, every element appears three times except for one, which appears exactly once. Find that single one.
+Note:
+Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?*/
+
+class Solution {
+    public int singleNumber(int[] nums) {
+        /*Solution 1*/
+        /*Universal method which can be used for all similar questions 
+        having an odd one out element.*/
+        // int ans=0;
+        // for(int i=0;i<32;i++){
+        //     int count=0;
+        //     for(int n: nums){
+        //         count+=(n>>i)&1;
+        //     }
+        //     ans |= (count%3)<<i;
+        // }
+        // return ans;
+        
+        /*Solution 2*/
+         /*Use HashMap to store the element and it's count. 
+         Check if the count is 1, then return that element.*/
+        HashMap<Integer,Integer> map = new HashMap<>();
+        for(int i=0;i<nums.length;i++)
+                map.put(nums[i],map.getOrDefault(nums[i],0)+1);
+        for(Map.Entry<Integer,Integer> e: map.entrySet()){
+            if(e.getValue().equals(1)){
+                return e.getKey();
+            }
+        }
+        return -1;
+    }
+}
