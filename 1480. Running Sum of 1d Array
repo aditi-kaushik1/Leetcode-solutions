@@ -4,6 +4,7 @@ Return the running sum of nums.*/
 class Solution {
     public int[] runningSum(int[] nums) {
         /*Solution 1*/
+        /*Not a good approach, O(n^2) is the time complexity as nested loop is present.*/
      // int n=nums.length;
      // int[] runningSum=new int[n];
      // for(int i=0;i<n;i++) {
@@ -14,12 +15,14 @@ class Solution {
      // return runningSum;   
         
      /*Solution 2*/
+     /*Made changes in the existing array to reduce space complexity*/
         // for(int i=1;i<nums.length;i++){
         //     nums[i]+=nums[i-1];
         // }
         // return nums;
         
         /*Solution 3*/
+        /*Same as solution 2, but used a new array for it*/
         int[] b=new int[nums.length];
         int prev=nums[0];
         for(int i=1;i<nums.length;i++){
