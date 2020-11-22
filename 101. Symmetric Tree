@@ -1,4 +1,5 @@
 /*Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).
+
 For example, this binary tree [1,2,2,3,4,4,3] is symmetric:
 
     1
@@ -6,6 +7,7 @@ For example, this binary tree [1,2,2,3,4,4,3] is symmetric:
   2   2
  / \ / \
 3  4 4  3
+ 
 
 But the following [1,2,2,null,3,null,3] is not:
 
@@ -15,7 +17,9 @@ But the following [1,2,2,null,3,null,3] is not:
    \   \
    3    3
  
+
 Follow up: Solve it both recursively and iteratively.*/
+
 
 /**
  * Definition for a binary tree node.
@@ -36,6 +40,7 @@ Follow up: Solve it both recursively and iteratively.*/
 /*Reference video: https://www.youtube.com/watch?v=K7LyJTWr2yA*/
 class Solution {
     public boolean isSymmetric(TreeNode root) {
+        //Recursive method
         //Tree is symmetric if empty
 //         if(root == null)
 //             return true;
@@ -51,6 +56,7 @@ class Solution {
 //             return false;
 //         return isSym(left.left, right.right) && isSym(left.right, right.left);
         
+        //Iterative method
         //Check the leetcode solutions page.
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
@@ -67,7 +73,7 @@ class Solution {
             queue.add(t2.right);
             queue.add(t1.right);
             queue.add(t2.left);
-        }
-        return true;
     }
+         return true;
+}
 }
