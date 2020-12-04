@@ -10,16 +10,27 @@ Explanation: Factors list is [1, 2, 3, 4, 6, 12], the 3rd factor is 3. */
 
 class Solution {
     public int kthFactor(int n, int k) {
-        //Create a list
-        List<Integer> factors = new ArrayList<>();
-        //Add all factors to list
-        for(int i = 1; i <= n; i ++){
+        /*Solution 1*/
+        //Creating a list for it 
+        // List<Integer> factors = new ArrayList<>();
+        // for(int i = 1; i <= n; i ++){
+        //     if(n % i == 0)
+        //         factors.add(i);
+        // }
+        // if(factors.size() < k)
+        //     return -1;
+        // return factors.get(k - 1);
+        
+        
+        /*Solution 2*/
+        //Not creating a list for it
+        int count = 0;
+        for(int i = 1; i <= n; i++){
             if(n % i == 0)
-                factors.add(i);
+                count++;
+            if(count == k)
+                return i;
         }
-        //Apply corner case code
-        if(factors.size() < k)
-            return -1;
-        return factors.get(k - 1);
+        return -1;
     }
 }
