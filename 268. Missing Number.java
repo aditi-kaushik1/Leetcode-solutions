@@ -45,12 +45,49 @@ class Solution {
         Find out the XOR of all the numbers in the array with all the numbers from 0 to n.
         The output will be the odd one out number.
         Return the output. */
-        int n = nums.length;
-        int res = 0;
-        for(int i = 0; i < nums.length; i ++) {
-            res = nums[i] ^ i ^ res;
+//         int n = nums.length;
+//         int res = 0;
+//         for(int i = 0; i < nums.length; i ++) {
+//             res = nums[i] ^ i ^ res;
+//         }
+//         res = res ^ nums.length;
+//         return res;
+        
+        //Solution 5
+        //Swapping numbers to their corresponding index cells
+        //https://leetcode.com/problems/missing-number/discuss/70058/Swapping-numbers-to-the-same-index-cell
+        //Check comment section of above link, for code
+        int cur = 0;
+        int pre = -1;
+        int size = nums.length;
+        while(cur < size) {
+            if(nums[cur] != cur) {
+                if(nums[cur] != size) {
+                    int temp = nums[cur];
+                    nums[cur] = nums[nums[cur]];
+                    nums[temp] = temp;
+                }
+                else {
+                    pre = cur;
+                    cur++;
+                }
+                }
+            else
+                cur++;
         }
-        res = res ^ nums.length;
-        return res;
+        return pre == -1 ? size : pre;
+        /*Very typical solution, try avoiding it.
+        If pre remains -1, this means that n = nums.length is not present, 
+        hence return size.
+        The while loop is simple and is used to traverse through all elements
+        to put them in their respective positions.
+        While swapping, be carful, as we are dealing with indices.
+        Keep cur constant untill all the swapping is done.
+        If the corresponding element is already present at it's position, 
+        then increment cur.
+        According to this algorithm, it checks whether 'n' is present or not.
+        If it is not present, then we need to return that.
+        Else, n is taking the place of a number from 0 to (n-1).
+        So, return that number. */
     }
 }
