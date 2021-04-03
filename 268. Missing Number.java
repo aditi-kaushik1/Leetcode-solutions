@@ -76,7 +76,7 @@ class Solution {
                 cur++;
         }
         return pre == -1 ? size : pre;
-        /*Very typical solution, try avoiding it.
+        /*This solution uses Swap sort. Learn it from Aditrya Verma's playlist.
         If pre remains -1, this means that n = nums.length is not present, 
         hence return size.
         The while loop is simple and is used to traverse through all elements
