@@ -54,6 +54,36 @@ class Solution {
 //         return res;
         
         //Solution 5
+        //Solution 1
+        //Using swap sort
+        //Check Aditya Verma's playlist
+        // int i = 0;
+        // int n = nums.length;
+        // boolean nIsPresent = false;
+        // while(i < nums.length) {
+        //     if(nums[i] == n) {
+        //         nIsPresent = true;
+        //         i++;
+        //         continue;
+        //     }
+        //     if(nums[i] != i) {
+        //         int temp = nums[i];
+        //         nums[i] = nums[temp];
+        //         nums[temp] = temp;
+        //     }
+        //     else
+        //         i++;
+        // }
+        // if(nIsPresent == false)
+        //     return n;
+        // for(int j = 0; j < n; j++) {
+        //     if(nums[j] != j)
+        //         return j;
+        // }
+        // return -1;
+        
+        //or
+        
         //Swapping numbers to their corresponding index cells
         //https://leetcode.com/problems/missing-number/discuss/70058/Swapping-numbers-to-the-same-index-cell
         //Check comment section of above link, for code
