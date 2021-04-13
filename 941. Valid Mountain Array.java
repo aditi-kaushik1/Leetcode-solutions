@@ -31,19 +31,15 @@ class Solution {
         
         //Solution 2
         //Leetcode solution page
-        /*If two pointers are used starting from either end,
+        /* If two pointers are used starting from either end,
         then they must meet at the same point.
         Hence, i should be equal to j, provided i = 0 and j = n-1 initially.
         Also, we need to make sure that i = 0 or n-1 are not the peek.
         Hence check if i > 0 and j < n or not. 
-        But unlike previous solution, it needs 2 iterations.
-        Make sure the iteration runs only till the third last element.
-        Because this will ensure that all the elements till second last element
-        are in increasing order. j will check if the last element is smaller
-        than the second last element or not.*/
+        But unlike previous solution, it needs 2 iterations. */
         int n = arr.length;
         int i = 0;
-        while(i < n - 2 && arr[i] < arr[i+1])
+        while(i < n - 1 && arr[i] < arr[i+1])
             i++;
         int j = n - 1;
         while(j > 0 && arr[j] < arr[j-1])
