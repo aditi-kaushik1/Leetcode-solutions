@@ -94,5 +94,27 @@ class Solution {
 //             mapping.put(')','(');
 //             mapping.put('}','{');
 //             mapping.put(']','[');
+        
+        //Solution 5
+        //ArrayList cannot be initialised in constructor.
+        //So use Arrays.asList(.........)
+//         List<Character> leftBrackets = Arrays.asList('(','{','[');
+//         List<Character> rightBrackets = Arrays.asList(')','}',']');
+//         Stack<Character> stack = new Stack<>();
+        
+//         for(int i = 0; i < s.length(); i++) {
+//             char c = s.charAt(i);
+//             if(leftBrackets.contains(c))
+//                 stack.push(c);
+//             else if(rightBrackets.contains(c)) {
+//                 if(stack.isEmpty())
+//                     return false;
+//                 else if(rightBrackets.indexOf(c) != leftBrackets.indexOf(stack.peek()))
+//                     return false;
+//                 else
+//                     stack.pop();
+//             }
+//         }
+//         return stack.isEmpty();
     }
 }    
