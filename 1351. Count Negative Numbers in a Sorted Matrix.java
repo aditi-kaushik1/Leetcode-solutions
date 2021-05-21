@@ -40,36 +40,54 @@ class Solution {
         
         //Solution 2
         //O(rows * log(cols))
+//         int rows = grid.length;
+//         int cols = grid[0].length;
+//         int res = 0;
+//         int l = 0;
+//         int r = cols - 1;
+//         int mid = 0;
+//         int lastNeg = cols - 1;
+        
+//         for(int row = 0; row < rows; row++) {
+//             if(grid[row][0] < 0) {
+//                 res += cols;
+//                 continue;
+//             }
+//             else if(grid[row][cols - 1] > 0)
+//                 continue;
+            
+//             else {
+//                 l = 0;
+//                 r = lastNeg;
+//                 while(l <= r) {
+//                     mid = l + (r - l)/2;
+//                     if(grid[row][mid] < 0)
+//                         r = mid - 1;
+//                     else
+//                         l = mid + 1;
+//                 }
+//             }
+//             res += cols - l;
+//             lastNeg = l;
+//         }
+//         return res;
+        
+        //Solution 3
+        //Best solution
+        //O(rows + cols) solution
         int rows = grid.length;
         int cols = grid[0].length;
-        int res = 0;
-        int l = 0;
-        int r = cols - 1;
-        int mid = 0;
-        int lastNeg = cols - 1;
-        
-        for(int row = 0; row < rows; row++) {
-            if(grid[row][0] < 0) {
-                res += cols;
-                continue;
+        int count = 0;
+        int r = rows - 1;
+        int c = 0;
+        while(r >= 0 && c < cols) {
+            if(grid[r][c] < 0) {
+                r--;
+                count += cols - c;
             }
-            else if(grid[row][cols - 1] > 0)
-                continue;
-            
-            else {
-                l = 0;
-                r = lastNeg;
-                while(l <= r) {
-                    mid = l + (r - l)/2;
-                    if(grid[row][mid] < 0)
-                        r = mid - 1;
-                    else
-                        l = mid + 1;
-                }
-            }
-            res += cols - l;
-            lastNeg = l;
+            else
+                c++;
         }
-        return res;
+        return count;
     }
 }
