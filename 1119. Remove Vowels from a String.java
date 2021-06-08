@@ -14,17 +14,29 @@ Constraints:
 s consists of only lowercase English letters. */
 
 class Solution {
-    public String removeVowels(String s) {
-        String ans = "";
-        Set<Character> vowel = new HashSet<>();
-        vowel.add('a');
-        vowel.add('e');
-        vowel.add('i');
-        vowel.add('o');
-        vowel.add('u');
-        for(char c : s.toCharArray())
-            if(!vowel.contains(c))
-                ans += c;
-        return ans;
+    public int calculateTime(String keyboard, String word) {
+        // int position = 0;
+        // int sum = 0;
+        // char[] keys = keyboard.toCharArray();
+        // Map<Character, Integer> map = new HashMap<>();
+        // for(int i = 0; i < keys.length; i++)
+        //     map.put(keys[i], i);
+        // for(char c : word.toCharArray()) {
+        //     int diff = Math.abs(map.get(c) - position);
+        //     position = map.get(c);
+        //     sum += diff;
+        // }
+        // return sum;
+        
+        int[] arr = new int[26];
+        for(int i = 0; i < keyboard.length(); i++)
+            arr[keyboard.charAt(i) - 'a'] = i;
+        int position = 0;
+        int sum = 0;
+        for(char c : word.toCharArray()) {
+            sum += Math.abs(position - arr[c - 'a']);
+            position = arr[c - 'a'];
+        }
+        return sum;
     }
 }
