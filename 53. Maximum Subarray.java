@@ -49,12 +49,48 @@ class Solution {
         
         //Solution 3:
         //Kadane's algorithm!!
-        int currSum = nums[0];
-        int maxSum = nums[0];
-        for(int i = 1; i < nums.length; i++) {
-            currSum = Math.max(currSum + nums[i], nums[i]);
-            maxSum = Math.max(currSum, maxSum);
+//         int currSum = nums[0];
+//         int maxSum = nums[0];
+//         for(int i = 1; i < nums.length; i++) {
+//             currSum = Math.max(currSum + nums[i], nums[i]);
+//             maxSum = Math.max(currSum, maxSum);
+//         }
+//         return maxSum;
+        
+        //Solution 4
+        //Divide and conquer
+        return maxSubArrayHelper(nums, 0, nums.length - 1);
+    }
+    
+    private int maxSubArrayHelper(int[] nums, int s, int e) {
+        if(s == e)
+            return nums[s];
+        int mid = s + (e - s)/2;
+        
+        int leftSum = maxSubArrayHelper(nums, s, mid);
+        int rightSum = maxSubArrayHelper(nums, mid + 1, e);
+        int midSum = crossSum(nums, s, mid, e);
+        
+        return Math.max(leftSum, Math.max(rightSum, midSum));
+    }
+    
+    private int crossSum(int nums[], int s, int mid, int e) {
+        int lSum = 0;
+        int maxLeft = Integer.MIN_VALUE;
+        
+        for(int i = mid; i >= s; i--) {
+            lSum += nums[i];
+            maxLeft = Math.max(lSum, maxLeft);
         }
-        return maxSum;
+        
+        int rSum = 0;
+        int maxRight = Integer.MIN_VALUE;
+        
+        for(int i = mid + 1; i <= e; i++) {
+            rSum += nums[i];
+            maxRight = Math.max(rSum, maxRight);
+        }
+        
+        return maxLeft + maxRight;
     }
 }
