@@ -60,15 +60,32 @@ class Solution {
         
         /*Solution 2*/
         /*Using recursive function*/
+//         if(root == null)
+//             return 0;
+//         int lDepth = maxDepth(root.left);
+//         int rDepth = maxDepth(root.right);
+        
+//         if (lDepth > rDepth)
+//             return (1 + lDepth);
+//         else {
+//             return (1 + rDepth);
+        
+        //Solution 3
+        //Using top down approach
+        
         if(root == null)
             return 0;
-        int lDepth = maxDepth(root.left);
-        int rDepth = maxDepth(root.right);
-        
-        if (lDepth > rDepth)
-            return (1 + lDepth);
-        else {
-            return (1 + rDepth);
-        }
+
+        maxHelper(root, 1);
+        return answer;
+    }
+    
+    public void maxHelper(TreeNode root, int depth) {
+        if(root == null)
+            return;
+        if(root.left == null && root.right == null)
+            answer = Math.max(answer, depth);
+        maxHelper(root.left, depth + 1);
+        maxHelper(root.right, depth + 1);
     }
 }
