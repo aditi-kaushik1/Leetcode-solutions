@@ -52,4 +52,47 @@ class Solution {
 //         return isValidBST(root.left, min, root.val) 
 //             && isValidBST(root.right, root.val, max);
 //     }
+    
+     //Solution 3
+//          if(root == null)
+//              return true;
+//          Stack<TreeNode> stack = new Stack<>();
+//          TreeNode curr = root;
+//          TreeNode pre = null;
+         
+//          while(curr != null || !stack.isEmpty()) {
+//              while(curr != null) {
+//                  stack.push(curr);
+//                  curr = curr.left;
+//              }
+             
+//              curr = stack.pop();
+//              if(pre != null && curr.val <= pre.val)
+//                  return false;
+//              pre = curr;
+//              curr = curr.right;
+//          }
+//          return true;
+         
+         //Solution 4
+         inorder(root);
+         return isSorted();
+     }
+    
+    List<Integer> list = new ArrayList<>();
+    
+    public void inorder(TreeNode root) {
+        if(root == null)
+            return;
+        inorder(root.left);
+        list.add(root.val);
+        inorder(root.right);
+    }
+    
+    public boolean isSorted() {
+        for(int i = 0; i < list.size() - 1; i++)
+            if(list.get(i) >= list.get(i + 1))
+               return false;
+        return true;
+    }
 }
