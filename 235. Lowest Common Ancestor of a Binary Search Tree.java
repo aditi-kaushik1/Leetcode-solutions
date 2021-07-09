@@ -15,15 +15,26 @@ According to the definition of LCA on Wikipedia:
 
 class Solution {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        TreeNode curr = root;
-        while(curr != null) {
-            if(p.val < curr.val && q.val < curr.val)
-                curr = curr.left;
-            else if(p.val > curr.val && q.val > curr.val)
-                curr = curr.right;
-            else
-                return curr;
-        }
-        return curr;
+        // TreeNode curr = root;
+        // while(curr != null) {
+        //     if(p.val < curr.val && q.val < curr.val)
+        //         curr = curr.left;
+        //     else if(p.val > curr.val && q.val > curr.val)
+        //         curr = curr.right;
+        //     else
+        //         return curr;
+        // }
+        // return curr;
+        return helper(root, p, q);
+    }
+    
+    public TreeNode helper(TreeNode root, TreeNode p, TreeNode q) {
+        if(root == null)
+            return null;
+        if(p.val < root.val && q.val < root.val)
+            return helper(root.left, p, q);
+        else if(p.val > root.val && q.val > root.val)
+            return helper(root.right, p, q);
+        return root;
     }
 }
