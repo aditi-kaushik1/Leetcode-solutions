@@ -26,8 +26,8 @@ class Solution {
  
         
         /*Solution 2*/
-        /*Time complexity : O(NlogN)
-          Space Complexity : O(N);
+        /*Time complexity : O(n)
+          Space Complexity : O(n);
          /*Use HashMap to store the element and it's count. 
          Check if the count is 1, then return that element.*/
         // HashMap<Integer,Integer> map = new HashMap<>();
