@@ -36,6 +36,7 @@ Constraints:
 
 class Solution {
     public String convertToTitle(int n) {
+        //Reference article : https://leetcode.com/problems/excel-sheet-column-title/discuss/441430/Detailed-Explanation-Here's-why-we-need-n-at-first-of-every-loop-(JavaPythonC%2B%2B)
         StringBuilder str = new StringBuilder();
         
         while(n > 0) {
