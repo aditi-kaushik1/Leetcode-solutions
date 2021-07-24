@@ -22,10 +22,19 @@ Constraints:
 
 class Solution {
     public int trailingZeroes(int n) {
+        //Solution 1
+        // int count = 0;
+        // while(n/5 != 0) {
+        //     count += n/5;;
+        //     n /= 5;
+        // }
+        // return count;
+        
+        //Solution 2
+        int i = 1;
         int count = 0;
-        while(n/5 != 0) {
-            count += n/5;;
-            n /= 5;
+        while(n/Math.pow(5,i) != 0) {
+            count += n/Math.pow(5,i++);
         }
         return count;
     }
