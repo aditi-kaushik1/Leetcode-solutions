@@ -5,6 +5,8 @@ class Solution {
     public boolean canPartition(int[] nums) {
         //Solution 1
         /*Using memoization
+        USE INT[][] FOR MEMOIZATION, BECAUSE WE INITIALISE WITH -1 IN IT.
+        FOR TABULATION METHOD, USE EITHER INT[][] OR BOOLEAN[][].
         It is enhanced recursion. It involves recursive code and storage.
         For recursion code, we need choice diagram.
         We write base condition, followed by code for choice diagram.
