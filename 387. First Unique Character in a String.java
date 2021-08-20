@@ -20,14 +20,20 @@ class Solution {
         
         //Solution 2
         //O(N) complexity
-        HashMap<Character, Integer> map = new HashMap<>();
-        for(Character c : s.toCharArray()) {
-            map.put(c,map.getOrDefault(c,0) + 1);
-        }
-        for(int i = 0; i < s.length(); i++) {
-            if(map.get(s.charAt(i)) == 1)
-               return i;
-        }
-               return -1;
+//         HashMap<Character, Integer> map = new HashMap<>();
+//         for(Character c : s.toCharArray()) {
+//             map.put(c,map.getOrDefault(c,0) + 1);
+//         }
+//         for(int i = 0; i < s.length(); i++) {
+//             if(map.get(s.charAt(i)) == 1)
+//                return i;
+//         }
+//                return -1;
+        
+        //Solution 3
+        for(int i = 0; i < s.length(); i++)
+            if(s.lastIndexOf(s.charAt(i)) == s.indexOf(s.charAt(i)))
+                return i;
+        return -1;
     }
 }
