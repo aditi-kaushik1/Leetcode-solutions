@@ -37,6 +37,7 @@ Follow up: Can you come up with an algorithm that runs in O(m + n) time? */
 
 class Solution {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
+        //Start from the end to prevent loss of data
         int i = m - 1;
         int j = n - 1;
         int k = m + n - 1;
