@@ -13,16 +13,28 @@ Explanation: The product of all values in the array is 144, and signFunc(144) = 
 
 class Solution {
     public int arraySign(int[] nums) {
-        int product = 1;
-        if(nums[0] != 0)
-            product = nums[0] / Math.abs(nums[0]);
-        if(nums[0] == 0)
-            return 0;
-        for(int i = 1; i< nums.length; i++) {
-            if(nums[i] == 0)
+        //Solution 1
+//         int product = 1;
+//         if(nums[0] != 0)
+//             product = nums[0] / Math.abs(nums[0]);
+//         if(nums[0] == 0)
+//             return 0;
+//         for(int i = 1; i< nums.length; i++) {
+//             if(nums[i] == 0)
+//                 return 0;
+//             product = product * (Math.abs(nums[i])/nums[i]);
+//         }
+//         return (product == 1) ? 1 : -1;
+        
+        //Solution 2
+        //Simpler, cleaner code
+        int countOfNegativeNumbers = 0;
+        for(int x : nums) {
+            if(x == 0)
                 return 0;
-            product = product * (Math.abs(nums[i])/nums[i]);
+            if(x < 0)
+                countOfNegativeNumbers++;
         }
-        return (product == 1) ? 1 : -1;
+        return (countOfNegativeNumbers % 2 == 0) ? 1 : -1;
     }
 }
