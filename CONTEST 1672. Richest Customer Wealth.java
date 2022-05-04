@@ -33,18 +33,14 @@ n == accounts[i].length
 
 class Solution {
     public int maximumWealth(int[][] accounts) {
-        int[] sum = new int[accounts.length];
-        int max = 0;
-        for(int i = 0; i < accounts.length; i ++){
-            for(int j = 0; j < accounts[i].length ; j ++){
-                sum[i] += accounts[i][j];
+        int ans = 0;
+        for(int i = 0; i < accounts.length; i++) {
+            int sum = 0;
+            for(int j = 0; j < accounts[0].length; j++) {
+                sum += accounts[i][j];
             }
+            ans = Math.max(ans, sum);
         }
-        max = sum[0];
-        for(int i = 0; i < accounts.length - 1; i ++){
-            if(sum[i] > max)
-                max = sum[i];
-        }
-        return max;
+        return ans;
     }
 }
