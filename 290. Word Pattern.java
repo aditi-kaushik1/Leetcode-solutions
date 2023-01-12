@@ -28,27 +28,27 @@ class Solution {
         //containsValue() has time complexity O(n)
         //Time complexity of solution 1 and 2 is same
         
-        HashMap<Character, String> map = new HashMap<>();
-        String[]  strArr = s.split(" ");
+//         HashMap<Character, String> map = new HashMap<>();
+//         String[]  strArr = s.split(" ");
         
-        if(pattern.length() != strArr.length)
-            return false;
+//         if(pattern.length() != strArr.length)
+//             return false;
         
-        for(int i = 0; i < pattern.length(); i++) {
-            char ch = pattern.charAt(i);
+//         for(int i = 0; i < pattern.length(); i++) {
+//             char ch = pattern.charAt(i);
             
-            if(map.containsKey(ch)) {
-                if(!map.get(ch).equals(strArr[i]))
-                    return false;
-            }
+//             if(map.containsKey(ch)) {
+//                 if(!map.get(ch).equals(strArr[i]))
+//                     return false;
+//             }
             
-            else {
-                if(map.containsValue(strArr[i]))
-                    return false;
-                map.put(ch, strArr[i]);
-            }
-        }
-        return true;
+//             else {
+//                 if(map.containsValue(strArr[i]))
+//                     return false;
+//                 map.put(ch, strArr[i]);
+//             }
+//         }
+//         return true;
         
         //Solution 2
         //Using another helper method to check if the map contains the same value or not
@@ -73,5 +73,23 @@ class Solution {
 //             if(map.get(ch).equals(s))
 //                 return ch;
 //         return '$';
+     
+     //Solution 3
+     
+     Map<Character, String> oneToOne = new HashMap<>();
+        Map<String, Character> reverseMap = new HashMap<>();
+        if(pattern.length() != s.split(" ").length)
+            return false;
+        int index = 0;
+        for(String word : s.split(" ")) {
+            char current = pattern.charAt(index++);
+            if(oneToOne.containsKey(current) && !oneToOne.get(current).equals(word))
+                return false;
+            if(reverseMap.containsKey(word) && reverseMap.get(word) != current)
+                return false;
+            reverseMap.put(word, current);
+            oneToOne.put(current, word); 
+        }
+        return true;
     }
 }
