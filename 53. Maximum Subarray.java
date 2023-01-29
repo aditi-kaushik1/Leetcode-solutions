@@ -59,38 +59,83 @@ class Solution {
         
         //Solution 4
         //Divide and conquer
-        return maxSubArrayHelper(nums, 0, nums.length - 1);
-    }
+//         return maxSubArrayHelper(nums, 0, nums.length - 1);
+//     }
     
-    private int maxSubArrayHelper(int[] nums, int s, int e) {
-        if(s == e)
-            return nums[s];
-        int mid = s + (e - s)/2;
+//     private int maxSubArrayHelper(int[] nums, int s, int e) {
+//         if(s == e)
+//             return nums[s];
+//         int mid = s + (e - s)/2;
         
-        int leftSum = maxSubArrayHelper(nums, s, mid);
-        int rightSum = maxSubArrayHelper(nums, mid + 1, e);
-        int midSum = crossSum(nums, s, mid, e);
+//         int leftSum = maxSubArrayHelper(nums, s, mid);
+//         int rightSum = maxSubArrayHelper(nums, mid + 1, e);
+//         int midSum = crossSum(nums, s, mid, e);
         
-        return Math.max(leftSum, Math.max(rightSum, midSum));
-    }
+//         return Math.max(leftSum, Math.max(rightSum, midSum));
+//     }
     
-    private int crossSum(int nums[], int s, int mid, int e) {
-        int lSum = 0;
-        int maxLeft = Integer.MIN_VALUE;
+//     private int crossSum(int nums[], int s, int mid, int e) {
+//         int lSum = 0;
+//         int maxLeft = Integer.MIN_VALUE;
         
-        for(int i = mid; i >= s; i--) {
-            lSum += nums[i];
-            maxLeft = Math.max(lSum, maxLeft);
+//         for(int i = mid; i >= s; i--) {
+//             lSum += nums[i];
+//             maxLeft = Math.max(lSum, maxLeft);
+//         }
+        
+//         int rSum = 0;
+//         int maxRight = Integer.MIN_VALUE;
+        
+//         for(int i = mid + 1; i <= e; i++) {
+//             rSum += nums[i];
+//             maxRight = Math.max(rSum, maxRight);
+//         }
+        
+//         return maxLeft + maxRight;
+//     }
+// }
+        
+        //Solution 5
+        
+        class Solution {
+    public int maxSubArray(int[] nums) {
+        int left = 0;
+        int right = 0;
+        int sumOfWindow = nums[0];
+        int ans = nums[0];
+
+        while(true) {
+            if(sumOfWindow < 0) {
+                sumOfWindow -= nums[left];
+                left++;
+            }
+            else {
+                right++;
+                if(right == nums.length)
+                    break;
+                sumOfWindow += nums[right];
+                ans = Math.max(ans, sumOfWindow);
+            }
+            if(left > right) {
+                right++;
+                if(right == nums.length)
+                    break;
+                sumOfWindow += nums[right];
+                ans = Math.max(ans, sumOfWindow);
+            }
         }
-        
-        int rSum = 0;
-        int maxRight = Integer.MIN_VALUE;
-        
-        for(int i = mid + 1; i <= e; i++) {
-            rSum += nums[i];
-            maxRight = Math.max(rSum, maxRight);
-        }
-        
-        return maxLeft + maxRight;
+        return ans;
     }
 }
+// nums = [-2,1,-3,4,-1,2,1,-5,4]
+// left = 3
+// right = 9
+// sumOfWindow = 5
+// ans = 6
+// nums.length = 9
+// ans = -2
+// [-2] -> [] -> [1] -> [1, -3] -> [-3] -> [] -> [4] -> [4, -1] -> [4, -1, 2] -> [4, -1, 2, 1] ->
+// [4, -1, 2, 1, -5] -> [4, -1, 2, 1, -5, 4]
+
+// [-1, -2, -3]
+//[-1] -> []
