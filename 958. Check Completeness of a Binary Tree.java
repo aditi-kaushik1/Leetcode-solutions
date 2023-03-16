@@ -80,7 +80,32 @@ class Solution {
     }
 }
 
-//Incomplete solution(extremely lengthy) :
+//Solution written on March 15
+
+// Queue<TreeNode> queue = new LinkedList<>();
+//         queue.add(root);
+//         while(!queue.isEmpty()) {
+//             int len = queue.size();
+//             for(int i = 0; i < len; i++) {
+//                 if(queue.peek() == null) {
+//                     while(queue.peek() == null && !queue.isEmpty()) {
+//                         queue.remove();
+//                     }
+//                     if(queue.isEmpty())
+//                         return true;
+//                     else
+//                         return false;
+//                 }
+//                 else {
+//                     TreeNode current = queue.remove();
+//                     queue.add(current.left);
+//                     queue.add(current.right);
+//                 }
+//             }
+//         }
+//         return true;
+
+//Incomplete solution 5(extremely lengthy) :
 
 //class Solution {
     //public boolean isCompleteTree(TreeNode root) {
